@@ -1,0 +1,34 @@
+server:
+  port: 2208
+  servlet:
+    context-path: /api/v1/my-notepad
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:postgresql://autorack.proxy.rlwy.net:50960/railway
+    username: postgres
+    password: JBRoVgZMiyzryzkHrBeulNYaYxXLxtqf
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate.default_schema: MS_NOTE_PAD
+      jdbc:
+        lob:
+          non_contextual_creation: false
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  application:
+    name: my-notepad
+    version: v1
+
+request-mapping:
+  controller:
+    category: category
+    user: user
+    note: note
