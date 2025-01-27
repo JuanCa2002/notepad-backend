@@ -56,8 +56,10 @@ public class CategoryServiceImpl implements CategoryService{
         CategoryBusinessException error = new CategoryBusinessException(CategoryApiErrorMessages.CATEGORY_NAME_ALREADY_EXISTS);
         if(repository.existsByName(categoryDto.getName(), foundEntity.getUser().getId())) throw error;
 
-        // Update the category's name with the value from the DTO
+        // Update the category's name, tag color and text color with the value from the DTO
         foundEntity.setName(categoryDto.getName());
+        foundEntity.setTagColor(categoryDto.getTagColor() != null ? categoryDto.getTagColor() : foundEntity.getTagColor());
+        foundEntity.setTextColor(categoryDto.getTextColor() != null ? categoryDto.getTextColor() : foundEntity.getTextColor());
 
         // Save the updated category entity and map it to a DTO for the response
         return mapper.entityToDto(repository.save(foundEntity));

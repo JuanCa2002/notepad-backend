@@ -13,6 +13,10 @@ public class CategoryDto {
 
     private String name;
 
+    private String tagColor;
+
+    private String textColor;
+
     private UserDto user;
 
     private List<NoteDto> notes;

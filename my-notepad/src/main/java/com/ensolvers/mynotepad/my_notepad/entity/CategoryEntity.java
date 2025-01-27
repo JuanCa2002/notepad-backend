@@ -36,6 +36,12 @@ public class CategoryEntity {
     @Column(name = "name", length = 20, nullable = false)
     private String name;
 
+    @Column(name = "tag_color", length = 40)
+    private String tagColor;
+
+    @Column(name = "text_color", length = 40)
+    private String textColor;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;

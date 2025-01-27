@@ -27,4 +27,12 @@ public class CategoryRequest {
     @Schema(description = "User unique id", example = "-1")
     private BigInteger userId;
 
+    @Size(min = 1, max = 50)
+    @Schema(description = "Tag color to show in the application", example = "#f1a7b4")
+    private String tagColor;
+
+    @Size(min = 1, max = 50)
+    @Schema(description = "Text color of the tag to show in the application", example = "white")
+    private String textColor;
+
 }

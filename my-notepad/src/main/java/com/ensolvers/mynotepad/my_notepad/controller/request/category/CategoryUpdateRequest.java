@@ -26,4 +26,12 @@ public class CategoryUpdateRequest{
     @Pattern(regexp = "^[A-Z ]+$", message = ": should only contain capital letters and spaces.")
     @Schema(description = "Category name", example = "FAMILY")
     private String name;
+
+    @Size(min = 1, max = 50)
+    @Schema(description = "Tag color to show in the application", example = "#f1a7b4")
+    private String tagColor;
+
+    @Size(min = 1, max = 50)
+    @Schema(description = "Text color of the tag to show in the application", example = "white")
+    private String textColor;
 }
