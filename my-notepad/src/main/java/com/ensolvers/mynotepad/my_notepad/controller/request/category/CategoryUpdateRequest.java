@@ -20,8 +20,6 @@ public class CategoryUpdateRequest{
     @Schema(description = "Category unique id", example = "-1")
     private Integer id;
 
-    @NotNull
-    @NotBlank
     @Size(min = 1, max = 50)
     @Pattern(regexp = "^[A-Z ]+$", message = ": should only contain capital letters and spaces.")
     @Schema(description = "Category name", example = "FAMILY")

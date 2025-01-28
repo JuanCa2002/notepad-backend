@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -54,10 +55,10 @@ public class CategoryServiceImpl implements CategoryService{
 
         // Validate if a category with the given NAME exists in the database
         CategoryBusinessException error = new CategoryBusinessException(CategoryApiErrorMessages.CATEGORY_NAME_ALREADY_EXISTS);
-        if(repository.existsByName(categoryDto.getName(), foundEntity.getUser().getId())) throw error;
+        if(!Objects.equals(foundEntity.getName(), categoryDto.getName()) && repository.existsByName(categoryDto.getName(), foundEntity.getUser().getId())) throw error;
 
         // Update the category's name, tag color and text color with the value from the DTO
-        foundEntity.setName(categoryDto.getName());
+        foundEntity.setName(categoryDto.getName()!= null ? categoryDto.getName(): foundEntity.getName());
         foundEntity.setTagColor(categoryDto.getTagColor() != null ? categoryDto.getTagColor() : foundEntity.getTagColor());
         foundEntity.setTextColor(categoryDto.getTextColor() != null ? categoryDto.getTextColor() : foundEntity.getTextColor());
 
